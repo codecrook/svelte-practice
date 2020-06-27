@@ -1,8 +1,10 @@
 <script>
   import Face from "./Face.svelte";
   import Container from "./Container.svelte";
-  let say = "hi";
-  setTimeout(() => (say = "bye"), 1000);
+  import Header from "./Header.svelte";
+  let [say, showHeader] = [false, false];
+  setTimeout(() => (say = true), 3000);
+  setTimeout(() => (showHeader = true), 3000);
 </script>
 
 <style>
@@ -19,9 +21,17 @@
   }
 </style>
 
+{#if showHeader}
+  <Header />
+{/if}
 <Container>
-  <div>{say}</div>
-  <Face size={4} index={2} />
-  <Face size={3} index={1} />
-  <Face />
+  {#if say}
+    <div>Hi!!</div>
+  {:else}
+    <div>Not saying anything...</div>
+  {/if}
+
+  {#each [2, 1, 0] as index}
+    <Face size={4} {index} />
+  {/each}
 </Container>
