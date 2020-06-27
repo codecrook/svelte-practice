@@ -35,9 +35,5 @@
   {#each [2, 1, 0] as index}
     <Face size={4} {index} />
   {/each}
-  <Button
-    on:show={() => (showHeader = true)}
-    on:hide={() => (showHeader = false)}>
-    Show Header
-  </Button>
+  <Button on:click={e => (showHeader = e.detail)}>Show Header</Button>
 </Container>
