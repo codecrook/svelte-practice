@@ -4,8 +4,13 @@
   import Face from "./Face.svelte";
   import Button from "./Button.svelte";
 
-  let [say, showHeader] = [false, false];
-  setTimeout(() => (say = true), 3000);
+  let showHeader = false;
+  const buttons = [
+    { value: 0, text: "ummmmmm......" },
+    { value: 1, text: "I sure do!" },
+    { value: -2, text: "gross!" }
+  ];
+  let score = 0;
 </script>
 
 <style>
@@ -26,14 +31,6 @@
   <Header />
 {/if}
 <Container>
-  {#if say}
-    <div>Hi!!</div>
-  {:else}
-    <div>Not saying anything...</div>
-  {/if}
-
-  {#each [2, 1, 0] as index}
-    <Face size={4} {index} />
-  {/each}
-  <Button on:click={e => (showHeader = e.detail)}>Show Header</Button>
+  <div>Do you like pizza 🍕? Score: {score}</div>
+  <Button on:click={e => (score += e.detail.value)} {buttons} />
 </Container>
