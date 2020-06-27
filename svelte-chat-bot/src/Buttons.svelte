@@ -5,6 +5,12 @@
 </script>
 
 <style>
+  .buttons-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 2em 1em;
+  }
   button {
     font-family: "Nunito", sans-serif;
     display: block;
@@ -21,8 +27,10 @@
   }
 </style>
 
-{#each buttons as button}
-  <button on:click={() => dispatch('click', { value: button.value })}>
-    {button.text}
-  </button>
-{/each}
+<div class="buttons-container">
+  {#each buttons as button}
+    <button on:click={() => dispatch('click', { value: button.value })}>
+      {button.text}
+    </button>
+  {/each}
+</div>
