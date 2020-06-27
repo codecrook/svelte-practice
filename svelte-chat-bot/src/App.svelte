@@ -3,14 +3,13 @@
   import Container from "./Container.svelte";
   import Face from "./Face.svelte";
   import Button from "./Button.svelte";
+  import story from "./story";
 
   let showHeader = false;
-  const buttons = [
-    { value: 0, text: "ummmmmm......" },
-    { value: 1, text: "I sure do!" },
-    { value: -2, text: "gross!" }
-  ];
+  const buttons = story[0].buttons;
   let score = 0;
+  $: smilySays = `Hi, there! your score is ${score}`;
+  $: if (score < -4) smilySays = "Wow! Your score is really low.";
 </script>
 
 <style>
@@ -31,6 +30,7 @@
   <Header />
 {/if}
 <Container>
-  <div>Do you like pizza 🍕? Score: {score}</div>
+  <div>{smilySays}</div>
+  <Face index={2} />
   <Button on:click={e => (score += e.detail.value)} {buttons} />
 </Container>
