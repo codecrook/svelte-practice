@@ -1,7 +1,7 @@
 <script>
   import { createEventDispatcher } from "svelte";
-  export let buttons;
   const dispatch = createEventDispatcher();
+  export let buttons;
 </script>
 
 <style>

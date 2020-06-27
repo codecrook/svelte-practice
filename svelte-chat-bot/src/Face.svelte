@@ -1,11 +1,21 @@
 <script>
-  export let size = 1,
-    index = 0;
-  const faces = [":)", ":(", ">:(", ":|"];
+  export let happyScore = 1;
+  export let size = 1;
+
+  const faceList = [
+    "🤬",
+    "😡",
+    "😭",
+    "🙁",
+    "😕",
+    "😐",
+    "🙂",
+    "😀",
+    "😄",
+    "😊",
+    "😘"
+  ];
+  $: index = happyScore + 5;
 </script>
 
-<style>
-
-</style>
-
-<div style="font-size: {size}em">{faces[index]}</div>
+<div style="font-size: {size}em">{faceList[index]}</div>

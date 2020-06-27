@@ -1,15 +1,18 @@
 <script>
-  import Header from "./Header.svelte";
-  import Container from "./Container.svelte";
   import Face from "./Face.svelte";
-  import Button from "./Button.svelte";
+  import Container from "./Container.svelte";
+  import Header from "./Header.svelte";
+  import Buttons from "./Buttons.svelte";
   import story from "./story";
 
   let showHeader = false;
-  const buttons = story[0].buttons;
-  let score = 0;
-  $: smilySays = `Hi, there! your score is ${score}`;
-  $: if (score < -4) smilySays = "Wow! Your score is really low.";
+  let [happyScore, storyIndex] = [0, 0];
+  $: smileySays = story[storyIndex].smileySays;
+  $: buttons = story[storyIndex].buttons;
+  function clickHandler(e) {
+    storyIndex += 1;
+    happyScore += e.detail.value;
+  }
 </script>
 
 <style>
@@ -30,7 +33,7 @@
   <Header />
 {/if}
 <Container>
-  <div>{smilySays}</div>
-  <Face index={2} />
-  <Button on:click={e => (score += e.detail.value)} {buttons} />
+  <div>{smileySays}</div>
+  <Face {happyScore} size={storyIndex + 1} />
+  <Buttons {buttons} on:click={clickHandler} />
 </Container>
