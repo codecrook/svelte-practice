@@ -1,17 +1,14 @@
 <script>
-  import ContactCard from "./ContactCard.svelte";
-  let name = "Deeptiman";
-  let age = 23;
-  const incrementAge = () => (age += 1);
+  import Face from "./Face.svelte";
+  let say = "hi";
+  setTimeout(() => (say = "bye"), 1000);
 </script>
 
 <style>
-
+  div {
+    color: red;
+  }
 </style>
 
-<main>
-  <h1>Hello, I'm {name}! I'm {age} years old.</h1>
-  <input type="text" bind:value={name} />
-  <button on:click={incrementAge}>Increase Age</button>
-</main>
-<ContactCard {name} proffession="Frontend Developer" desc="Figuring Out!!" />
+<div>{say}</div>
+<Face size={4} />
