@@ -1,10 +1,11 @@
 <script>
-  import Face from "./Face.svelte";
-  import Container from "./Container.svelte";
   import Header from "./Header.svelte";
+  import Container from "./Container.svelte";
+  import Face from "./Face.svelte";
+  import Button from "./Button.svelte";
+
   let [say, showHeader] = [false, false];
   setTimeout(() => (say = true), 3000);
-  setTimeout(() => (showHeader = true), 3000);
 </script>
 
 <style>
@@ -34,4 +35,5 @@
   {#each [2, 1, 0] as index}
     <Face size={4} {index} />
   {/each}
+  <Button on:click={() => (showHeader = true)}>Show Header</Button>
 </Container>
